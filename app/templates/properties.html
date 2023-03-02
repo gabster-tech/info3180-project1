@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block main %}
+<h1 class="page-header">View Images</h1>
+
+{% include 'flash_messages.html' %}
+<div >
+    <li id="image-view">
+        <ul>
+            {% for property in properties: %}
+                <img src="{{property.photo}}">
+                <p>{property.title}</p>
+                <p>{property.location}</p>
+                <p>{property.price}</p>
+                <button>View Property</button>
+            {%endfor%}
+        </ul>
+    </li>
+</div>
+
+{% endblock %}
