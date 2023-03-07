@@ -27,7 +27,7 @@ def about():
     """Render the website's about page."""
     return render_template('about.html', name="Mary Jane")
 
-@app.route('/properties/create',methods=['POST', 'GET'])
+@app.route('/properties/create', methods=['POST', 'GET'])
 def create():
     propertyForm = PropertyForm()
     if propertyForm.validate_on_submit():
@@ -44,15 +44,15 @@ def create():
         property = Property(title,num_of_bedrooms,num_of_bathrooms,location,price,type,photo,description)
         db.session.add(property)
         db.session.commit()
-        flash("Property was successfully added")
+        flash("Property was successfully added!")
         return redirect(url_for('properties'))
 
-    return render_template('create.html')
+    return render_template('create.html',form=propertyForm )
 
 @app.route('/properties')
 def properties():
     properties = db.session.execute(db.select(Property)).scalars()
-    return render_template('properties.html',properties=properties)
+    return render_template('properties.html', properties=properties)
 
 @app.route('/properties/<propertyid>')
 def view_properties(propertyid):

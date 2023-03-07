@@ -5,10 +5,10 @@ from wtforms.validators import InputRequired
 
 class PropertyForm (FlaskForm):
     title = StringField('Title', validators=[InputRequired()])
-    num_of_bedrooms = StringField('Number of bedrooms',validators=[InputRequired()])
-    num_of_bathrooms = StringField('Number of bathrooms',validators=[InputRequired()])
+    num_of_bedrooms = StringField('No. of Rooms',validators=[InputRequired()])
+    num_of_bathrooms = StringField('No. of bathrooms',validators=[InputRequired()])
     location = StringField('Location',validators=[InputRequired()])
     price = StringField('Price',validators=[InputRequired()])
-    type = SelectField('Choose the type', choices=['House','Apartment'],validators=[InputRequired()])
+    type = SelectField('Property Type', choices=['House','Apartment'],validators=[InputRequired()])
     description = TextAreaField('Description', validators=[InputRequired()])
     photo = FileField('Photo', validators=[FileRequired(),FileAllowed(['png','jpg'],'Images Only!')])
