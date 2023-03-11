@@ -6,7 +6,7 @@ This file contains the routes for your application.
 """
 
 from app import app,db
-from flask import render_template, request, redirect, url_for, flash
+from flask import render_template, request, redirect, send_from_directory, url_for, flash
 from .forms import PropertyForm
 from .models import Property
 from werkzeug.utils import secure_filename
@@ -41,7 +41,7 @@ def create():
         photo = propertyForm.photo.data
         filename = secure_filename(photo.filename)
         photo.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
-        property = Property(title,num_of_bedrooms,num_of_bathrooms,location,price,type,photo,description)
+        property = Property(title,num_of_bedrooms,num_of_bathrooms,location,price,type,filename,description)
         db.session.add(property)
         db.session.commit()
         flash("Property was successfully added!")
@@ -54,13 +54,16 @@ def properties():
     properties = db.session.execute(db.select(Property)).scalars()
     return render_template('properties.html', properties=properties)
 
-@app.route('/properties/<propertyid>')
-def view_properties(propertyid):
-    propertyid = int(propertyid)
-    prop=db.session.execute(db.select(Property).filter_by(id=propertyid)).scalar_one()
-    return render_template('view_properties.html', prop=prop)
+@app.route('/properties/<property_id>')
+def view_properties(property_id):
+    property_id = int(property_id)
+    prop=db.session.execute(db.select(Property).filter_by(id=property_id)).scalar_one()
+    return render_template('view.html', property=prop)
 
-
+@app.route('/upload/<filename>')
+def get_uploaded_images(filename):
+    rootdir = os.getcwd()
+    return send_from_directory(os.path.join(rootdir,app.config['UPLOAD_FOLDER']), filename)
 
 ###
 # The functions below should be applicable to all Flask apps.

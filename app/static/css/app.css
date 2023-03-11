@@ -1,3 +1,30 @@
 body {
     padding-top: 5rem;
 }
+
+#image-view{
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: center;
+    grid-gap: 10px;
+} 
+
+p{
+    color:black;
+}
+
+.card{
+    margin-right: 30px;
+}
+
+#propid {
+    width: 100%;
+}
+
+form{
+    width: 90%;
+}
+
+.form-label{
+    font-weight: bold;
+}

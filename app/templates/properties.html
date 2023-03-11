@@ -1,20 +1,26 @@
 {% extends 'base.html' %}
 
 {% block main %}
-<h1 class="page-header">View Images</h1>
+<h1 class="page-header">Properties</h1>
 
-<div >
-    <li id="image-view">
-        <ul>
-            {% for property in properties: %}
-                <img src="{{property.photo}}">
-                <p>{property.title}</p>
-                <p>{property.location}</p>
-                <p>{property.price}</p>
-                <button>View Property</button>
-            {%endfor%}
-        </ul>
-    </li>
-</div>
+<div class="container">
+    <div class="row">
+    {% for property in properties: %}
+      <div class="col-sm">
+        <div class="card">
+            <img id="property_img" class="card-img-top" src="{{url_for("get_uploaded_images",filename=property.photo)}}"/>
+            <div class="card-body">
+                <h5 class="card-title">{{property.title}}</h5>
+                <p class="card-text"><span><i class="bi bi-geo-alt"></i></span>{{property.location}}</p>
+                <span class="badge rounded-pill bg-primary"><p class="card-text">{{property.price}}</p></span>
+            </div> 
+            <div class="card-footer">
+                <a href="{{url_for("view_properties",property_id=property.id)}}" id="propbtn" class="btn">View Property</a>
+            </div>
+        </div>
+      </div>
+      {%endfor%}
+    </div>
+  </div>
 
 {% endblock %}

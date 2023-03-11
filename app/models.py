@@ -3,10 +3,10 @@ from . import db
 class Property(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100), unique=True)
-    num_of_bedrooms = db.Column(db.Integer)
-    num_of_bathrooms = db.Column(db.Integer)
+    num_of_bedrooms = db.Column(db.String)
+    num_of_bathrooms = db.Column(db.String)
     location = db.Column(db.String(100))
-    price = db.Column(db.Integer)
+    price = db.Column(db.String)
     type = db.Column(db.String(15))
     photo = db.Column(db.String(255), unique=True)
     description = db.Column(db.String(255), unique=True)
