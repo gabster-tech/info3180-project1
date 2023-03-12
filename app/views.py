@@ -25,7 +25,7 @@ def home():
 @app.route('/about/')
 def about():
     """Render the website's about page."""
-    return render_template('about.html', name="Mary Jane")
+    return render_template('about.html', info="INFO3180 Project 1 for Gabrielle Burke")
 
 @app.route('/properties/create', methods=['POST', 'GET'])
 def create():
@@ -46,7 +46,6 @@ def create():
         db.session.commit()
         flash("Property was successfully added!")
         return redirect(url_for('properties'))
-
     return render_template('create.html',form=propertyForm )
 
 @app.route('/properties')
@@ -74,9 +73,7 @@ def flash_errors(form):
     for field, errors in form.errors.items():
         for error in errors:
             flash(u"Error in the %s field - %s" % (
-                getattr(form, field).label.text,
-                error
-            ), 'danger')
+                getattr(form, field).label.text, error), 'danger')
 
 @app.route('/<file_name>.txt')
 def send_text_file(file_name):

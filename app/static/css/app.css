@@ -9,6 +9,14 @@ body {
     grid-gap: 10px;
 } 
 
+#icon, i .bi .bi-geo-alt{
+    margin-right: 5px;
+    height:27px;
+    font-size: 25px;
+    height: 27px;
+    width: 27px
+}
+
 p{
     color:black;
 }
@@ -19,6 +27,12 @@ p{
 
 #propid {
     width: 100%;
+}
+
+#property_img{
+    height:300px;
+    width:100%;
+    object-fit: cover;
 }
 
 form{

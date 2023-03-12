@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% block main %}
+{% extends 'base.html' %} 
+{% block main %}
 
 <div class="row">
   <div class="col-lg">
@@ -14,9 +15,9 @@
           <span class="badge rounded-pill bg-primary"><p class="card-text">{{property.type}}</p></span
           >
           <p class="card-text">{{property.description}}</p>
-          <span><p class="card-text"><img class="icon" src="{{url_for('static', filename='bed_icon.png') }}" />{{property.num_of_bedrooms}}</p></span>
-          <span><p class="card-text"><span><img class="icon" src="{{url_for('static', filename='bath_icon.png') }}" /></span>{{property.num_of_bathrooms}}</p></span>
-          <p class="card-text"><span><i class="bi bi-geo-alt"></i></span>{{property.location}}</p>
+          <p class="card-text"><img id="icon" src="{{url_for('static', filename='bed_icon.png') }}" />{{property.num_of_bedrooms}}</p></span>
+          <p class="card-text"><span><img id="icon" src="{{url_for('static', filename='bath_icon.png') }}"/></span>{{property.num_of_bathrooms}}</p>
+          <p class="card-text"><span><i id= "icon" class="bi bi-geo-alt"></i></span>{{property.location}}</p>
           <a href="#" class="btn btn-primary">Email Realtor</a>
         </div>
       </div>

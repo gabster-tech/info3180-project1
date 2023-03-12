@@ -11,7 +11,7 @@
             <img id="property_img" class="card-img-top" src="{{url_for("get_uploaded_images",filename=property.photo)}}"/>
             <div class="card-body">
                 <h5 class="card-title">{{property.title}}</h5>
-                <p class="card-text"><span><i class="bi bi-geo-alt"></i></span>{{property.location}}</p>
+                <p class="card-text"><span><i id ="icon" class="bi bi-geo-alt"></i></span>{{property.location}}</p>
                 <span class="badge rounded-pill bg-primary"><p class="card-text">{{property.price}}</p></span>
             </div> 
             <div class="card-footer">
